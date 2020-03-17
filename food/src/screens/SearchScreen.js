@@ -1,12 +1,12 @@
 import React,{useState} from 'react'
-import {View,Text,StyleSheet,ScrollView} from 'react-native'
+import {StyleSheet,ScrollView} from 'react-native'
 import SearchBar from '../components/SearchBar'
 import useResults from '../hooks/useResults'
 import ResultsList from '../components/ResultsList'
 
 
 const SearchScreen = ({navigation}) =>{
-    console.log(navigation.navigate)
+
 
     const [term,setTerm] = useState('')
     const [searchApi,results] = useResults();
@@ -16,13 +16,14 @@ const SearchScreen = ({navigation}) =>{
             return result.price === price
         })
     }
+    console.log(term)
 
     return (
         <>
         <SearchBar
              term={term} 
-             onTermChange={(newTerm)=>setTerm(newTerm)}
-             onTermSubmit={(newTerm)=>searchApi(newTerm)}
+             onTermChange={setTerm}
+             onTermSubmit={()=>searchApi(term)}
          />
          <ScrollView>
         <ResultsList
