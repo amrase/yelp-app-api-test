@@ -16,7 +16,6 @@ const SearchScreen = ({navigation}) =>{
             return result.price === price
         })
     }
-    console.log(term)
 
     return (
         <>

@@ -11,6 +11,7 @@ const ResultsShowScreen = ({navigation}) =>{
         return null;
     }
     
+    
 
     const getSingleResult = async (id) =>{
         const response = await yelp.get(`/${id}`)
@@ -24,20 +25,22 @@ const ResultsShowScreen = ({navigation}) =>{
 
     return (
         <View>
-        <FlatList 
-            data={result.photos}
-            keyExtractor={(photo) => photo}
-            renderItem={({item})=>{
-                return <Image source ={{uri :item}} style={styles.image}/>
-            }}
-        />
+             <FlatList data={result.photos}
+                    keyExtractor={(photo) => photo}
+                    renderItem={({item})=>{
+                        return <Image source={{uri:item}} style={styles.image}/>
+                    }}
+          /> 
     </View>
 )}
 
 const styles = StyleSheet.create({
     image:{
+        margin:20,
+        borderRadius:10,
+        justifyContent:'center',
         height:200,
-        width:300
+        width:370
     }
 })
 
